@@ -1,0 +1,84 @@
+﻿[dotenv@17.3.1] injecting env (5) from .env -- tip: ≡ƒöÉ encrypt with Dotenvx: https://dotenvx.com
+node : node:internal/mo
+dules/cjs/loader:1423
+At line:1 char:1
++ node server.js 2>&1 
+| Out-File -Encoding 
+utf8 error.txt
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (node:internal   
+ /modules/cjs/loade    
+r:1423:String) [],     
+RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  throw err;
+  ^
+
+Error: Cannot find 
+module 'sequelize'
+Require stack:
+- C:\Users\sathv\Downlo
+ads\Creations\Project 
+Management Tool\backend
+\config\db.js
+- C:\Users\sathv\Downlo
+ads\Creations\Project 
+Management 
+Tool\backend\server.js
+    at Module._resolveF
+ilename (node:internal/
+modules/cjs/loader:1420
+:15)
+    at 
+defaultResolveImpl (nod
+e:internal/modules/cjs/
+loader:1058:19)
+    at 
+resolveForCJSWithHooks 
+(node:internal/modules/
+cjs/loader:1063:22)
+    at Module._load (no
+de:internal/modules/cjs
+/loader:1226:37)
+    at TracingChannel.t
+raceSync (node:diagnost
+ics_channel:328:14)
+    at wrapModuleLoad (
+node:internal/modules/c
+js/loader:244:24)
+    at Module.require (
+node:internal/modules/c
+js/loader:1503:12)
+    at require (node:in
+ternal/modules/helpers:
+152:16)
+    at 
+Object.<anonymous> (C:\
+Users\sathv\Downloads\C
+reations\Project 
+Management Tool\backend
+\config\db.js:1:23)
+    at Module._compile 
+(node:internal/modules/
+cjs/loader:1760:14) {
+  code: 
+'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\sathv\\
+Downloads\\Creations\\P
+roject Management Tool\
+\backend\\config\\db.js
+',
+    'C:\\Users\\sathv\\
+Downloads\\Creations\\P
+roject Management Tool\
+\backend\\server.js'
+  ]
+}
+
+Node.js v24.11.0

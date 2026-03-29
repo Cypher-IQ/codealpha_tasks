@@ -1,0 +1,75 @@
+@baseUrl = http://localhost:5000/api
+@email = testuser1@example.com
+@password = password123
+# The variable below will be automatically set after login
+@authToken = {{login.response.body.token}}
+@projectId = {{createProject.response.body._id}}
+@boardId = {{createBoard.response.body._id}}
+
+### 1. Register User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### 2. Login User
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### 3. Get Current User Profile
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{authToken}}
+
+### 4. Create Project
+# @name createProject
+POST {{baseUrl}}/projects
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "My First Project",
+  "description": "A test project to manage our tasks"
+}
+
+### 5. Get All Projects
+GET {{baseUrl}}/projects
+Authorization: Bearer {{authToken}}
+
+### 6. Create Board
+# @name createBoard
+POST {{baseUrl}}/projects/{{projectId}}/boards
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Sprint 1 Board"
+}
+
+### 7. Create Task
+# Note: You will need to manually grab a columnId from the board response for the "columnId" field.
+# By default, columns are created with names: To Do, In Progress, Done. 
+# Replace <YOUR_COLUMN_ID_HERE> with the actual _id of the 'To Do' column from the board response.
+POST {{baseUrl}}/projects/{{projectId}}/boards/{{boardId}}/tasks
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "title": "Design Database Schema",
+  "description": "Create mongoose models for the project",
+  "columnId": "<YOUR_COLUMN_ID_HERE>", 
+  "priority": "High"
+}
+
+### 8. Get Project Activity Logs
+GET {{baseUrl}}/projects/{{projectId}}/activities
+Authorization: Bearer {{authToken}}
